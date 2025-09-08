@@ -1,26 +1,20 @@
 #include <string>
 #include <cctype>
-#include <algorithm>
 
 using namespace std;
 
+
+
 string solution(string s) {
+    if (!s.empty() && !isdigit(s[0])) {
+        s[0] = toupper(s[0]);
+    }
 
-    transform(s.begin(), s.end(), s.begin(), [](unsigned char c) {
-        return tolower(c);
-        });
-
-    bool check = true;
-    for(char& c :s)
-    {
-        if (c == ' ')
-        {
-            check = true;
-        }
-        else if(check)
-        {
-            c = toupper(c);
-            check = false;
+    for (int i = 1; i < s.size(); i++) {
+        if (isspace(s[i-1]) && !isspace(s[i])) {
+            s[i] = toupper(s[i]);
+        } else {
+            s[i] = tolower(s[i]);
         }
     }
     return s;
