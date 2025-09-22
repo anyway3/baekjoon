@@ -1,17 +1,20 @@
 #include <string>
 #include <vector>
-
+#include <iostream>
 using namespace std;
 
 int solution(int a, int b, int n) {
     int answer = 0;
-    int ccount = 0;
-    while (n>=a)
+    int re;
+    int na;
+    while (n >= a)
     {
-        answer = answer + ((n / a) * b);
-        ccount = n % a;
-        n = ((n / a) * b) + (n % a);
+        re = (n / a) * b;
+        na = n % a;
+        n = re + na;
 
+        answer = answer + re;
     }
+    cout << answer;
     return answer;
 }
